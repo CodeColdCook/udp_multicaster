@@ -158,7 +158,34 @@ int setsockopt(int sockfd, int level, int optname,const void *optval, socklen_t 
 
 [mtlticast](./test/mtlticast)
 
-## TODO
+## 功能封装
 
-- [ ] 广播与组播的封装
-- [ ] qt中network的广播与组播接口
+udp_multicaster
+
+### 依赖
+
+- GTest
+
+### 编译
+
+```shell
+# git@github.com:CodeColdCook/udp_multicaster.git
+cd build
+cmake .. 
+make 
+```
+
+### 运行
+
+```shell
+# multicaster
+cd build
+./mtlticast_test_multicaster
+
+# client
+./mtlticast_test_client
+
+# server
+./mtlticast_test_server
+```
+

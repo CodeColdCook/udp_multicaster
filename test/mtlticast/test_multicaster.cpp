@@ -3,20 +3,10 @@
 #include <thread>
 
 #include "udp_multicaster.h"
-#include "nmea_parser.h"
-
-NmeaParser paser;
 
 void MsgCallback(char* msg, int size) {
   printf("server say: %s\n", msg);
   printf("re_size: %d\n", size);
-  double time = 1920.56;
-  NmeaType r = paser.ParseNmeaMessage(msg, time);
-  if(r == NmeaType::NMEA_NULL)
-    printf("not NMEA message\n");
-  else{
-    printf("receive a NMEA message of type: %d", (int)r);
-  }
 }
 
 // TEST(UdpMulticaster, Server) {
