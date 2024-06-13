@@ -17,7 +17,7 @@ TEST(UDPMulticast, Client) {
   // 2. 通信的fd绑定本地的IP和端口
   struct sockaddr_in addr;
   addr.sin_family = AF_INET;
-  addr.sin_port = htons(20842);
+  addr.sin_port = htons(23230);
   addr.sin_addr.s_addr = INADDR_ANY;
   int ret = bind(fd, (struct sockaddr *)&addr, sizeof(addr));
   if (ret == -1) {
@@ -28,8 +28,8 @@ TEST(UDPMulticast, Client) {
   //  加入到组播
   struct ip_mreqn op;
   op.imr_address.s_addr = INADDR_ANY;  // 本地地址
-  inet_pton(AF_INET, "224.100.100.10", &op.imr_multiaddr.s_addr);
-  op.imr_ifindex = if_nametoindex("ens33");
+  inet_pton(AF_INET, "224.100.100.110", &op.imr_multiaddr.s_addr);
+  op.imr_ifindex = if_nametoindex("enx207bd2d7086d");
 
   setsockopt(fd, IPPROTO_IP, IP_ADD_MEMBERSHIP, &op, sizeof(op));
   // 3. 通信
